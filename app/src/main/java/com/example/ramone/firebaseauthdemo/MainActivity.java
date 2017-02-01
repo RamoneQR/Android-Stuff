@@ -17,12 +17,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
 import static android.R.attr.button;
+import static com.example.ramone.firebaseauthdemo.R.id.conditionTextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,12 +35,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textViewSignin;
-    private DatabaseReference mDatabase;
 
 
     private ProgressDialog progressDialog;
-
     private FirebaseAuth firebaseAuth;
+
+    //References to the Database
+    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mConditionRef = mDatabase.child("Name");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Pointing to the database
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         if (firebaseAuth.getCurrentUser() != null){
             //User already logged in
@@ -71,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonRegister.setOnClickListener(this);
         textViewSignin.setOnClickListener(this);
     }
+
 
     private void registerUser(){
 
@@ -121,21 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString().trim();
 
 
-        HashMap<String, String> dataMap = new HashMap<String, String>();
-        dataMap.put("Name", name);
-        dataMap.put("Email", email);
 
-
-        mDatabase.push().setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Entered Successfully", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
 
         if (view == buttonRegister){

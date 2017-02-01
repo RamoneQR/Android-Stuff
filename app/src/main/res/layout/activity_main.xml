@@ -87,4 +87,14 @@
         android:layout_below="@+id/textView_register"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp" />
+
+    <TextView
+        android:text="Condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_register"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="33dp"
+        android:layout_marginTop="14dp"
+        android:id="@+id/conditionTextView" />
 </RelativeLayout>

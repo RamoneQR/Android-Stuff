@@ -5,8 +5,7 @@
     android:id="@+id/activity_camera_"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ramone.firebaseauthdemo.Camera_Activity"
-    android:orientation="vertical">
+    tools:context="com.example.ramone.firebaseauthdemo.Camera_Activity">
 
 
     <TextureView
@@ -36,7 +35,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="27dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="dispatchTakePictureIntent"/>
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
