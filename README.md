@@ -1,4 +1,3 @@
-# Android-Stuff
+# Meme-Maker
 AndroidDevelopment
-This repository will be a collection of all my android development projects.
-Feel free to take a look around!
+This repsitory is for a current project called Meme maker which will be a social media app to make memes and share them
